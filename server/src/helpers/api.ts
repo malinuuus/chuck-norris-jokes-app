@@ -1,0 +1,1 @@
+export const chuckNorrisApiUrl: string = 'https://api.chucknorris.io';
