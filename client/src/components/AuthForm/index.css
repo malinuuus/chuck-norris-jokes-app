@@ -1,0 +1,65 @@
+.container {
+  width: 70%;
+  position: relative;
+}
+
+.auth-card {
+  text-align: center;
+}
+
+.decoration-image {
+  position: absolute;
+}
+
+.decoration-image#left-decoration {
+  left: 0;
+  top: 15%;
+  width: 130px;
+  transform: translateX(-50%);
+}
+
+.decoration-image#right-decoration {
+  right: 0;
+  bottom: 15%;
+  width: 65px;
+  transform: translateX(50%);
+}
+
+.form-header {
+  font-weight: 500;
+}
+
+.auth-card form {
+  width: 60%;
+  margin: 40px auto 20px auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.logo-image {
+  width: 75px;
+  fill: var(--gray);
+  margin-bottom: 40px;
+}
+
+.form-input .MuiOutlinedInput-root {
+  &.Mui-focused .MuiOutlinedInput-notchedOutline {
+    border-color: var(--light-pink);
+  }
+}
+
+.submit-btn.MuiButton-root {
+  background-color: var(--background-blue);
+}
+
+.form-link {
+  font-weight: bold;
+}
+
+.quote-text {
+  color: var(--dark-pink);
+  font-style: italic;
+  font-weight: 600;
+  margin-top: 60px;
+}
