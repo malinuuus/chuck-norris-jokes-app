@@ -17,10 +17,7 @@ export const Decoration: FC<{ id: string }> = ({ id }) => {
           d='M79.196 4.48527C83.8823 9.17156 83.8823 16.7695 79.196 21.4558C74.5097 26.1421 66.9117 26.1421 62.2254 21.4558C57.5391 16.7695 57.5391 9.17156 62.2254 4.48527C66.9117 -0.201022 74.5097 -0.201022 79.196 4.48527Z'
           fill='#E84A8F'
         />
-        <path
-          d='M36.7696 32.7695L56.846 38.149L42.149 52.8459L36.7696 32.7695Z'
-          fill='#E84A8F'
-        />
+        <path d='M36.7696 32.7695L56.846 38.149L42.149 52.8459L36.7696 32.7695Z' fill='#E84A8F' />
         <path
           d='M77.7818 110.551C82.4681 115.238 82.4681 122.836 77.7818 127.522C73.0955 132.208 65.4975 132.208 60.8112 127.522C56.1249 122.836 56.1249 115.238 60.8112 110.551C65.4975 105.865 73.0955 105.865 77.7818 110.551Z'
           fill='#E84A8F'
@@ -37,14 +34,8 @@ export const Decoration: FC<{ id: string }> = ({ id }) => {
           d='M78.4889 57.5183C83.1752 62.2046 83.1752 69.8025 78.4889 74.4888C73.8026 79.1751 66.2046 79.1751 61.5183 74.4888C56.832 69.8025 56.832 62.2046 61.5183 57.5183C66.2046 52.832 73.8026 52.832 78.4889 57.5183Z'
           fill='#E84A8F'
         />
-        <path
-          d='M36.0625 85.8026L56.1389 91.182L41.4419 105.879L36.0625 85.8026Z'
-          fill='#E84A8F'
-        />
-        <path
-          d='M89.8026 32.0624L109.879 37.4419L95.182 52.1388L89.8026 32.0624Z'
-          fill='#E84A8F'
-        />
+        <path d='M36.0625 85.8026L56.1389 91.182L41.4419 105.879L36.0625 85.8026Z' fill='#E84A8F' />
+        <path d='M89.8026 32.0624L109.879 37.4419L95.182 52.1388L89.8026 32.0624Z' fill='#E84A8F' />
       </g>
       <defs>
         <filter
@@ -66,15 +57,8 @@ export const Decoration: FC<{ id: string }> = ({ id }) => {
           <feOffset dy='4' />
           <feGaussianBlur stdDeviation='2' />
           <feComposite in2='hardAlpha' operator='out' />
-          <feColorMatrix
-            type='matrix'
-            values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0'
-          />
-          <feBlend
-            mode='normal'
-            in2='BackgroundImageFix'
-            result='effect1_dropShadow_26_31810'
-          />
+          <feColorMatrix type='matrix' values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0' />
+          <feBlend mode='normal' in2='BackgroundImageFix' result='effect1_dropShadow_26_31810' />
           <feBlend
             mode='normal'
             in='SourceGraphic'

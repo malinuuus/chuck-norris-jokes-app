@@ -1,21 +1,21 @@
-import { Card, CardContent, TextField, Button } from '@mui/material'
-import { FC, useState, ChangeEvent } from 'react'
-import { Decoration } from '../Decoration'
-import { Logo } from '../Logo'
-import './index.css'
-import { Link } from 'react-router-dom'
+import { Card, CardContent, TextField, Button } from '@mui/material';
+import { FC, useState, ChangeEvent } from 'react';
+import { Decoration } from '../Decoration';
+import { Logo } from '../Logo';
+import './index.css';
+import { Link } from 'react-router-dom';
 
 type FormData = {
-  email: string
-  password: string
-}
+  email: string;
+  password: string;
+};
 
 type AuthFormProps = {
-  submitBtnText: string
-  redirectText: string
-  redirectLinkText: string
-  redirectLink: string
-}
+  submitBtnText: string;
+  redirectText: string;
+  redirectLinkText: string;
+  redirectLink: string;
+};
 
 export const AuthForm: FC<AuthFormProps> = ({
   submitBtnText,
@@ -26,26 +26,20 @@ export const AuthForm: FC<AuthFormProps> = ({
   const [formData, setFormData] = useState<FormData>({
     email: '',
     password: ''
-  })
+  });
 
-  const isButtonDisabled: boolean = !formData.email || !formData.password
+  const isButtonDisabled: boolean = !formData.email || !formData.password;
 
   const handleFormDataChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target
-    setFormData((prev) => ({ ...prev, [name]: value }))
-    console.log(formData)
-  }
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+    console.log(formData);
+  };
 
   return (
     <div className='container'>
       <Decoration id='left-decoration' />
-      <Card
-        className='auth-card'
-        sx={{
-          borderRadius: '24px',
-          boxShadow: '0px 10px 16px rgba(0, 0, 0, 0.25)'
-        }}
-      >
+      <Card className='card auth-card'>
         <CardContent>
           <Logo />
           <h1 className='form-header'>Explore "Chuck Jokes" with us!</h1>
@@ -77,7 +71,7 @@ export const AuthForm: FC<AuthFormProps> = ({
               type='submit'
               fullWidth
               disabled={isButtonDisabled}
-              className='submit-btn'
+              className='blue-btn'
             >
               {submitBtnText}
             </Button>
@@ -88,12 +82,10 @@ export const AuthForm: FC<AuthFormProps> = ({
               {redirectLinkText}
             </Link>
           </p>
-          <p className='quote-text'>
-            "Chuck Norris can login without signing up, on any website."
-          </p>
+          <p className='quote-text'>"Chuck Norris can login without signing up, on any website."</p>
         </CardContent>
       </Card>
       <Decoration id='right-decoration' />
     </div>
-  )
-}
+  );
+};

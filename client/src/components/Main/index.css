@@ -1,0 +1,56 @@
+.main-container {
+  display: flex;
+  gap: 20px;
+}
+
+.side-bar.card.MuiCard-root {
+  background-color: var(--gray);
+  color: #fff;
+  flex: 1;
+}
+
+.side-bar .MuiCardContent-root {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  margin: 10px 20px;
+}
+
+.side-bar .logo-image {
+  fill: var(--light);
+  display: block;
+  margin: 0 auto 30px auto;
+}
+
+.side-bar a {
+  text-transform: uppercase;
+}
+
+.main-content {
+  position: relative;
+  flex: 3;
+}
+
+.main-content-card {
+  height: 100%;
+  padding: 80px 60px 60px 20px;
+}
+
+.side-bar-menu {
+  list-style: none;
+}
+
+.side-bar-menu > li {
+  margin-bottom: 30px;
+}
+
+.side-bar-menu a.active {
+  text-decoration: underline;
+  font-weight: 700;
+}
+
+.small-text {
+  font-size: 12px;
+  margin-top: 30px;
+}

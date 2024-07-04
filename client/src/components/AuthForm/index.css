@@ -1,5 +1,5 @@
 .container {
-  width: 70%;
+  width: 75%;
   position: relative;
 }
 
@@ -47,10 +47,6 @@
   &.Mui-focused .MuiOutlinedInput-notchedOutline {
     border-color: var(--light-pink);
   }
-}
-
-.submit-btn.MuiButton-root {
-  background-color: var(--background-blue);
 }
 
 .form-link {
