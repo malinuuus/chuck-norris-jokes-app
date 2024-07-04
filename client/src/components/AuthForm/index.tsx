@@ -30,10 +30,9 @@ export const AuthForm: FC<AuthFormProps> = ({
 
   const isButtonDisabled: boolean = !formData.email || !formData.password;
 
-  const handleFormDataChange = (e: ChangeEvent<HTMLInputElement>) => {
+  const handleFormDataChange = (e: ChangeEvent<HTMLInputElement>): void => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
-    console.log(formData);
   };
 
   return (
@@ -75,13 +74,13 @@ export const AuthForm: FC<AuthFormProps> = ({
             >
               {submitBtnText}
             </Button>
+            <p>
+              {redirectText}{' '}
+              <Link to={redirectLink} className='form-link'>
+                {redirectLinkText}
+              </Link>
+            </p>
           </form>
-          <p>
-            {redirectText}{' '}
-            <Link to={redirectLink} className='form-link'>
-              {redirectLinkText}
-            </Link>
-          </p>
           <p className='quote-text'>"Chuck Norris can login without signing up, on any website."</p>
         </CardContent>
       </Card>

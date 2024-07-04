@@ -8,13 +8,45 @@ import {
   SelectChangeEvent,
   TextField
 } from '@mui/material';
-import { ChangeEvent, FC, useState } from 'react';
+import { ChangeEvent, FC, useEffect, useState } from 'react';
 import chuckNorrisImage from '../../assets/750x400_sobowtor-chucka-norrisa.jpg';
 import './index.css';
+import { fetchCategories, fetchRandomJoke, Joke } from '../../apiService';
 
 export const RandomJoke: FC = () => {
   const [name, setName] = useState<string>('');
   const [categoryName, setCategoryName] = useState<string>('');
+  const [randomJoke, setRandomJoke] = useState<Joke | null>(null);
+  const [categories, setCategories] = useState<string[]>([]);
+
+  const getRandomJoke = async (): Promise<void> => {
+    const result = await fetchRandomJoke(name.trim() || '', categoryName);
+    setRandomJoke(result);
+  };
+
+  const getCategories = async (): Promise<void> => {
+    const result = await fetchCategories();
+    setCategories(result);
+  };
+
+  useEffect(() => {
+    getRandomJoke();
+    getCategories();
+  }, []);
+
+  const saveJoke = (): void => {
+    if (randomJoke) {
+      const myJokes = localStorage.getItem('myJokes');
+      let myJokesParsed: Joke[] = [];
+
+      if (myJokes) {
+        myJokesParsed = JSON.parse(myJokes);
+      }
+
+      myJokesParsed.push(randomJoke);
+      localStorage.setItem('myJokes', JSON.stringify(myJokesParsed));
+    }
+  };
 
   return (
     <CardContent className='content'>
@@ -23,10 +55,7 @@ export const RandomJoke: FC = () => {
       </div>
       <div>
         <h1>Get your random joke</h1>
-        <p className='random-joke'>
-          “If Chuck Norris were to travel to an alternate dimension in which there was another Chuck
-          Norris and they both fight, they would both win”
-        </p>
+        <p className='random-joke'>{randomJoke?.value}</p>
       </div>
       <div className='joke-options'>
         <div>
@@ -38,7 +67,7 @@ export const RandomJoke: FC = () => {
             fullWidth
             focused
           />
-          <Button className='blue-btn' variant='contained' fullWidth>
+          <Button className='blue-btn' variant='contained' onClick={getRandomJoke} fullWidth>
             Draw a random {name.trim() || 'Chuck Norris'} Joke
           </Button>
         </div>
@@ -57,12 +86,14 @@ export const RandomJoke: FC = () => {
                   : () => <span className='placeholder-text'>Categories</span>
               }
             >
-              <MenuItem value='1'>Category 1</MenuItem>
-              <MenuItem value='2'>Category 2</MenuItem>
-              <MenuItem value='3'>Category 3</MenuItem>
+              {categories.map((category) => (
+                <MenuItem value={category} key={category}>
+                  {category}
+                </MenuItem>
+              ))}
             </Select>
           </FormControl>
-          <Button className='pink-btn' variant='contained' fullWidth>
+          <Button className='pink-btn' variant='contained' onClick={saveJoke} fullWidth>
             Save this joke
           </Button>
         </div>

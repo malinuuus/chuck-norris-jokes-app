@@ -7,6 +7,14 @@
   text-align: center;
 }
 
+.auth-card .MuiCardContent-root {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+}
+
 .decoration-image {
   position: absolute;
 }
@@ -31,7 +39,6 @@
 
 .auth-card form {
   width: 60%;
-  margin: 40px auto 20px auto;
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -40,7 +47,6 @@
 .logo-image {
   width: 75px;
   fill: var(--gray);
-  margin-bottom: 40px;
 }
 
 .form-input .MuiOutlinedInput-root {
@@ -57,5 +63,4 @@
   color: var(--dark-pink);
   font-style: italic;
   font-weight: 600;
-  margin-top: 60px;
 }

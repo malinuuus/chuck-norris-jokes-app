@@ -37,6 +37,10 @@
   padding: 80px 60px 60px 20px;
 }
 
+.main-content-card.card.MuiCard-root {
+  overflow-y: auto;
+}
+
 .side-bar-menu {
   list-style: none;
 }
