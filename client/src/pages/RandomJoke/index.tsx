@@ -15,7 +15,6 @@ import './index.css';
 export const RandomJoke: FC = () => {
   const [name, setName] = useState<string>('');
   const [categoryName, setCategoryName] = useState<string>('');
-  console.log(categoryName);
 
   return (
     <CardContent className='content'>
@@ -40,7 +39,7 @@ export const RandomJoke: FC = () => {
             focused
           />
           <Button className='blue-btn' variant='contained' fullWidth>
-            Draw a random Chuck Norris Joke
+            Draw a random {name.trim() || 'Chuck Norris'} Joke
           </Button>
         </div>
         <div>

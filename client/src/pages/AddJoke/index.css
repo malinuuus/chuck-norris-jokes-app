@@ -1,0 +1,8 @@
+.new-joke-form {
+  width: 70%;
+  margin-top: 40px;
+}
+
+.new-joke-input.MuiFormControl-root {
+  margin-bottom: 40px;
+}
