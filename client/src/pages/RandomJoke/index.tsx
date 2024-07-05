@@ -11,7 +11,8 @@ import {
 import { ChangeEvent, FC, useEffect, useState } from 'react';
 import chuckNorrisImage from '../../assets/750x400_sobowtor-chucka-norrisa.jpg';
 import './index.css';
-import { fetchCategories, fetchRandomJoke, Joke } from '../../apiService';
+import { fetchCategories, fetchRandomJoke, Joke } from '../../services/apiService';
+import { saveJokeToLocalStorage } from '../../utils/localStorage';
 
 export const RandomJoke: FC = () => {
   const [name, setName] = useState<string>('');
@@ -36,15 +37,7 @@ export const RandomJoke: FC = () => {
 
   const saveJoke = (): void => {
     if (randomJoke) {
-      const myJokes = localStorage.getItem('myJokes');
-      let myJokesParsed: Joke[] = [];
-
-      if (myJokes) {
-        myJokesParsed = JSON.parse(myJokes);
-      }
-
-      myJokesParsed.push(randomJoke);
-      localStorage.setItem('myJokes', JSON.stringify(myJokesParsed));
+      saveJokeToLocalStorage(randomJoke);
     }
   };
 
@@ -62,6 +55,7 @@ export const RandomJoke: FC = () => {
           <TextField
             label='Impersonate'
             placeholder='Impersonate Chuck Norris'
+            className='form-input'
             value={name}
             onChange={(e: ChangeEvent<HTMLInputElement>) => setName(e.target.value)}
             fullWidth
@@ -72,7 +66,7 @@ export const RandomJoke: FC = () => {
           </Button>
         </div>
         <div>
-          <FormControl fullWidth focused>
+          <FormControl fullWidth focused className='form-input'>
             <InputLabel id='category-select-label'>Categories</InputLabel>
             <Select
               labelId='category-select-label'

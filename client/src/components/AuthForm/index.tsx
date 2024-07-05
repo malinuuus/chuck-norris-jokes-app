@@ -1,9 +1,9 @@
 import { Card, CardContent, TextField, Button } from '@mui/material';
-import { FC, useState, ChangeEvent } from 'react';
+import { FC, useState, ChangeEvent, FormEvent } from 'react';
 import { Decoration } from '../Decoration';
 import { Logo } from '../Logo';
 import './index.css';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 type FormData = {
   email: string;
@@ -15,13 +15,15 @@ type AuthFormProps = {
   redirectText: string;
   redirectLinkText: string;
   redirectLink: string;
+  pathOnSubmit: string;
 };
 
 export const AuthForm: FC<AuthFormProps> = ({
   submitBtnText,
   redirectText,
   redirectLinkText,
-  redirectLink
+  redirectLink,
+  pathOnSubmit
 }) => {
   const [formData, setFormData] = useState<FormData>({
     email: '',
@@ -29,10 +31,16 @@ export const AuthForm: FC<AuthFormProps> = ({
   });
 
   const isButtonDisabled: boolean = !formData.email || !formData.password;
+  const navigate = useNavigate();
 
   const handleFormDataChange = (e: ChangeEvent<HTMLInputElement>): void => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = (e: FormEvent<HTMLFormElement>): void => {
+    e.preventDefault();
+    navigate(pathOnSubmit);
   };
 
   return (
@@ -42,7 +50,7 @@ export const AuthForm: FC<AuthFormProps> = ({
         <CardContent>
           <Logo />
           <h1 className='form-header'>Explore "Chuck Jokes" with us!</h1>
-          <form>
+          <form onSubmit={handleSubmit}>
             <TextField
               label='E-mail'
               name='email'

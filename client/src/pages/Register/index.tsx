@@ -8,6 +8,7 @@ export const Register: FC = () => {
       redirectText='Already have an account?'
       redirectLinkText='Log in here.'
       redirectLink='/login'
+      pathOnSubmit='/login'
     />
   )
 }

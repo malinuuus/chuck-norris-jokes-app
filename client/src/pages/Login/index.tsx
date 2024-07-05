@@ -8,6 +8,7 @@ export const Login: FC = () => {
       redirectText="Don't have an account?"
       redirectLinkText='Sign up here.'
       redirectLink='/register'
+      pathOnSubmit='/random-joke'
     />
   )
 }

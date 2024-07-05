@@ -2,24 +2,20 @@ import { BackspaceOutlined } from '@mui/icons-material';
 import { CardContent } from '@mui/material';
 import { FC, useEffect, useState } from 'react';
 import './index.css';
-import { Joke } from '../../apiService';
+import { Joke } from '../../services/apiService';
+import { getJokesFromLocalStorage, removeJokeFromLocalStorage } from '../../utils/localStorage';
 
 export const MyJokes: FC = () => {
   const [myJokes, setMyJokes] = useState<Joke[]>([]);
 
   useEffect(() => {
-    const jokesString = localStorage.getItem('myJokes');
-
-    if (jokesString) {
-      const jokes: Joke[] = JSON.parse(jokesString);
-      setMyJokes(jokes);
-    }
+    const savedJokes = getJokesFromLocalStorage();
+    setMyJokes(savedJokes);
   }, []);
 
   const removeJoke = (id: string): void => {
-    const newJokesList = myJokes.filter(joke => joke.id !== id);
-    localStorage.setItem('myJokes', JSON.stringify(newJokesList));
-    setMyJokes(newJokesList);
+    const newJokes = removeJokeFromLocalStorage(myJokes, id);
+    setMyJokes(newJokes);
   };
 
   return (
