@@ -11,20 +11,21 @@ export interface Joke {
   value: string;
 }
 
-export const fetchRandomJoke = async (name: string, category: string): Promise<Joke> => {
+const fetchData = async <T>(path: string): Promise<T> => {
   try {
-    const response = await apiService.get<Joke>(`/jokes/random?name=${name}&category=${category}`);
+    const response = await apiService.get<T>(path);
     return response.data;
   } catch (err) {
     throw err;
   }
 };
 
+export const fetchRandomJoke = async (name: string, category: string): Promise<Joke> => {
+  const path = `/jokes/random?name=${name}&category=${category}`;
+  return fetchData<Joke>(path);
+};
+
 export const fetchCategories = async (): Promise<string[]> => {
-  try {
-    const response = await apiService.get<string[]>('/categories');
-    return response.data;
-  } catch (err) {
-    throw err;
-  }
+  const path = '/categories';
+  return fetchData<string[]>(path);
 };
